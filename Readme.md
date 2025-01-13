@@ -79,6 +79,16 @@ The output file `output.csv` contains:
 
 ---
 
+## Assumptions
+
+- **File Format**: Input files (`lookup_tables.csv`, `protocols.csv`, `flow_logs.txt`) are plain text; flow logs are space-separated, and lookup/protocol files are CSVs with required headers.
+
+- **Case Insensitivity**: Matching for tags, ports, and protocols is case-insensitive, with all strings converted to lowercase during processing.
+
+- **Tag and Protocol Mapping**: `(dstport, protocol)` combinations can map to multiple tags. Protocol numbers are mapped using `protocols.csv`, defaulting to `unknown` if unmatched.
+
+- **Flow Log Parsing**: Logs have at least 11 fields, extracting the destination port (6th field) and protocol number (7th field) as per 0-based indexing. Invalid or incomplete lines are skipped.
+
 ## Testing
 Unit tests are included in the `test_flow_logs.py` file. To run the tests:
 ```bash
