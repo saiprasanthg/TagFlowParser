@@ -52,7 +52,7 @@ Prepare the following input files:
 ### Step 2: Run the Script
 Execute the script:
 ```bash
-python main.py
+python3 main.py
 ```
 This will generate an output file named `output.csv` containing the tag counts and port/protocol combination counts.
 
@@ -82,7 +82,7 @@ The output file `output.csv` contains:
 ## Testing
 Unit tests are included in the `test_flow_logs.py` file. To run the tests:
 ```bash
-python -m unittest discover tests
+python3 -m unittest discover tests
 ```
 
 ---
