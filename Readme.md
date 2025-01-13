@@ -2,12 +2,9 @@
 
 This project processes flow logs and maps them to tags using a lookup table. It generates outputs that summarize tag counts and port/protocol combination counts, helping analyze network traffic effectively.
 
-## Features
-- Parse lookup tables for ports, protocols, and tags.
-- Process flow logs to extract relevant fields.
-- Map flow log entries to tags based on the lookup table.
-- Generate output summarizing tag counts and port/protocol combinations.
-- Error handling for missing files and invalid data.
+# Description 
+
+Write a program that can parse a file containing flow log data and maps each row to a tag based on a lookup table. The lookup table is defined as a csv file, and it has 3 columns, dstport,protocol,tag.   The dstport and protocol combination decide what tag can be applied
 
 ---
 
@@ -97,6 +94,19 @@ python3 -m unittest discover tests
 
 ---
 
+## Requirement details 
+
+   Input file as well as the file containing tag mappings are plain text (ascii) files  
+
+    The flow log file size can be up to 10 MB 
+
+    The lookup file can have up to 10000 mappings 
+
+    The tags can map to more than one port, protocol combinations.  for e.g. sv_P1 and sv_P2 in the sample above. 
+
+    The matches should be case insensitive 
+
+
 ## Error Handling
 - **Missing Files**: Raises `FileNotFoundError` if input files are not found.
 - **Invalid Data**: Logs warnings for invalid entries or fields.
@@ -110,3 +120,6 @@ python3 -m unittest discover tests
 
 ## Protocol Numbers 
 Assigned based on http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml#protocol-numbers-1
+
+## References 
+Reference for flow logs: https://docs.aws.amazon.com/vpc/latest/userguide/flow-log-records.html  
